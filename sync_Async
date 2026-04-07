@@ -1,0 +1,116 @@
+Sync vs Async Operations in Node.js
+1. Synchronous (Sync) Operation
+
+Synchronous execution means:
+
+Code runs step by step
+Next line executes only after the previous one finishes
+It is blocking in nature
+Example (Sync)
+const fs = require('fs');
+
+console.log("Start");
+
+const data = fs.readFileSync('input.txt', 'utf8');
+console.log(data);
+
+console.log("End");
+Output Flow
+Start
+(file content)
+End
+
+The program waits until the file is completely read.
+
+Key Points
+Blocking execution
+Slower for large operations
+Easier to understand
+2. Asynchronous (Async) Operation
+
+Asynchronous execution means:
+
+Tasks run in the background
+Code continues executing without waiting
+It is non-blocking
+Example (Async)
+const fs = require('fs');
+
+console.log("Start");
+
+fs.readFile('input.txt', 'utf8', (err, data) => {
+    console.log(data);
+});
+
+console.log("End");
+Output Flow
+Start
+End
+(file content)
+
+The file is read after the main code continues.
+
+Key Points
+Non-blocking execution
+Faster for real-world applications
+Used in backend systems
+3. Example using setTimeout
+console.log("Start");
+
+setTimeout(() => {
+    console.log("Task done");
+}, 2000);
+
+console.log("End");
+Output
+Start
+End
+Task done
+4. Difference Between Sync and Async
+Feature	Sync	Async
+Execution	Blocking	Non-blocking
+Speed	Slower	Faster
+Use Case	Small tasks	Real applications
+Example	readFileSync	readFile
+5. Node.js Internals
+
+Node.js is single-threaded but efficient because of:
+
+Event Loop
+Callbacks
+Non-blocking I/O
+6. When to Use
+Use Sync when:
+Writing small scripts
+Debugging
+Simple operations
+Use Async when:
+Building APIs
+Handling files
+Working with databases
+Developing backend systems
+7. Modern Approach (Async/Await)
+const fs = require('fs').promises;
+
+async function run() {
+    console.log("Start");
+
+    const data = await fs.readFile('input.txt', 'utf8');
+    console.log(data);
+
+    console.log("End");
+}
+
+run();
+8. Important Concepts
+Callback: Function passed as an argument
+Promise: Handles async results
+Async/Await: Cleaner syntax for async code
+9. Interview Definition
+
+Synchronous operations block execution until completion, while asynchronous operations allow non-blocking execution using callbacks, promises, or async/await.
+
+Final Summary
+Sync means wait for each step
+Async means continue execution without waiting
+Node.js uses async behavior to achieve high performance
