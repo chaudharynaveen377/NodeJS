@@ -1,0 +1,82 @@
+File System in Node.js (fs module)
+
+Node.js provides the fs (File System) module to:
+
+Read files
+Write files
+Update files
+Delete files
+1. Import fs Module
+const fs = require('fs');
+2. Reading Files
+(A) Asynchronous Read (Recommended)
+fs.readFile('input.txt', 'utf8', (err, data) => {
+    if (err) {
+        console.log(err);
+        return;
+    }
+    console.log(data);
+});
+Key Points:
+Non-blocking
+Suitable for backend applications
+(B) Synchronous Read
+const data = fs.readFileSync('input.txt', 'utf8');
+console.log(data);
+Key Points:
+Blocking
+Used for small scripts
+3. Writing Files
+(A) Asynchronous Write
+fs.writeFile('output.txt', 'Hello World', (err) => {
+    if (err) {
+        console.log(err);
+        return;
+    }
+    console.log("File written successfully");
+});
+(B) Synchronous Write
+fs.writeFileSync('output.txt', 'Hello World');
+4. Appending to File
+fs.appendFile('output.txt', '\nNew Line', (err) => {
+    if (err) throw err;
+});
+5. Modern Approach (Promises / Async-Await)
+const fs = require('fs').promises;
+
+async function run() {
+    try {
+        const data = await fs.readFile('input.txt', 'utf8');
+        console.log(data);
+
+        await fs.writeFile('output.txt', data + "\nProcessed");
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+run();
+6. Working with JSON Files
+Read JSON
+const data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
+console.log(data);
+Write JSON
+fs.writeFileSync('data.json', JSON.stringify(data, null, 2));
+7. Important Concepts
+'utf8' → converts file data to string
+Without encoding → returns Buffer
+Always handle errors in async operations
+8. Sync vs Async in File Handling
+Operation	Sync	Async
+Behavior	Blocking	Non-blocking
+Performance	Slower	Faster
+Usage	Small scripts	Real apps
+9. Interview Definition
+
+Reading and writing files in Node.js is done using the fs module, which provides both synchronous (blocking) and asynchronous (non-blocking) methods to handle file operations.
+
+Final Summary
+Use readFile and writeFile for async operations
+Use readFileSync and writeFileSync for simple tasks
+Prefer async or async/await in real applications
+Handle errors properly
