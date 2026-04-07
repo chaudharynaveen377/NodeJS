@@ -1,0 +1,8 @@
+function sum(callback, a,b){
+let result=a+b;
+    callback(result);
+}
+function display(result){
+    console.log("The result is: "+result);
+}
+sum(display, 5,10);
