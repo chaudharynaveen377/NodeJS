@@ -1,0 +1,90 @@
+Creating a Server in Node.js
+
+Node.js provides the http module to create a web server.
+
+1. Import http Module
+const http = require('http');
+2. Create Server
+const server = http.createServer((req, res) => {
+    res.end("Hello World");
+});
+Explanation:
+req → request object (client request)
+res → response object (server response)
+3. Start Server (listen)
+server.listen(3000, () => {
+    console.log("Server running at http://localhost:3000");
+});
+Meaning:
+Server runs on port 3000
+
+Access via browser:
+
+http://localhost:3000
+4. Basic Routing Example
+const http = require('http');
+
+const server = http.createServer((req, res) => {
+
+    if (req.url === '/' && req.method === 'GET') {
+        res.end("Home Page");
+    }
+    else if (req.url === '/about' && req.method === 'GET') {
+        res.end("About Page");
+    }
+    else {
+        res.statusCode = 404;
+        res.end("Not Found");
+    }
+
+});
+
+server.listen(3000, () => {
+    console.log("Server running at http://localhost:3000");
+});
+5. Set Response Headers
+res.writeHead(200, { 'Content-Type': 'text/plain' });
+res.end("Hello World");
+Common Content Types:
+text/plain
+text/html
+application/json
+6. Send JSON Response
+const data = { name: "Naveen", age: 20 };
+
+res.writeHead(200, { 'Content-Type': 'application/json' });
+res.end(JSON.stringify(data));
+7. Request Information
+console.log(req.url);      // URL
+console.log(req.method);   // GET, POST, etc.
+8. Why Use Express Instead?
+
+Problems with http module:
+
+Code becomes lengthy
+Routing becomes complex
+Hard to manage in large projects
+
+That is why Express.js is preferred.
+
+9. Express Server Example (Quick)
+const express = require('express');
+const app = express();
+
+app.get('/', (req, res) => {
+    res.send("Home Page");
+});
+
+app.listen(3000, () => {
+    console.log("Server running on port 3000");
+});
+10. Interview Definition
+
+Creating a server in Node.js involves using the http module to handle client requests and send responses over a specified port.
+
+Final Summary
+Use http.createServer() to create server
+Use req and res to handle request and response
+Use server.listen(port) to start server
+Routing can be handled manually or using Express
+Express is preferred for scalable applications
