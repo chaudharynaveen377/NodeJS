@@ -1,0 +1,29 @@
+Interview Ready Answer
+
+A website works on a client-server architecture where the browser sends an HTTP request to the server. The server processes the request, interacts with the database if needed, and returns a response (HTML, CSS, JavaScript), which the browser renders into a user interface.
+
+  Final Summary
+
+User enters URL
+DNS resolves IP
+Request goes to server
+Server processes + DB fetch
+Response sent
+Browser renders UI
+
+Architecture Diagram
+User
+ ↓
+Browser
+ ↓
+DNS
+ ↓
+Server
+ ↓
+Backend Logic
+ ↓
+Database
+ ↓
+Response
+ ↓
+Browser Render
