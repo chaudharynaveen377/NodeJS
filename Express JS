@@ -1,0 +1,26 @@
+1️⃣ What is Express.js?
+
+👉 Express.js is a fast, minimal web framework for Node.js used to build APIs and web applications.
+
+2️⃣ Why use Express.js?
+
+👉
+
+Simplifies routing
+Middleware support
+Easy API creation
+Better structure than core Node.js
+3️⃣ How to install Express?
+npm install express
+4️⃣ Basic Express Server Example
+const express = require('express');
+const app = express();
+
+app.get('/', (req, res) => {
+    res.send("Hello World");
+});
+
+app.listen(3000);
+5️⃣ What is routing in Express?
+
+👉 Mapping URLs + HTTP methods to specific functions.
