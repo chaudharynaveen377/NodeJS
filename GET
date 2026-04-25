@@ -1,0 +1,18 @@
+app.get() (Read / Fetch Data)
+📌 Use
+
+👉 Server se data fetch karne ke liye
+
+💻 Example
+const express = require('express');
+const app = express();
+
+app.get('/', (req, res) => {
+    res.send("Home Page");
+});
+
+app.listen(3000);
+🔍 Line-by-Line
+app.get('/') → jab GET request / par aaye
+(req, res) → request & response object
+res.send() → response bhejta hai
