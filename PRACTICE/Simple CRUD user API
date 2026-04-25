@@ -1,0 +1,74 @@
+const express = require('express');
+const app = express();
+
+app.use(express.json()); // parse JSON body
+
+// Dummy database
+let users = [
+    { id: 1, name: "Naveen" },
+    { id: 2, name: "Rahul" }
+];
+
+
+// 🔹 1. GET → Get all users
+app.get('/users', (req, res) => {
+    res.json(users);
+});
+
+
+// 🔹 2. GET → Get user by ID
+app.get('/users/:id', (req, res) => {
+    const id = parseInt(req.params.id);
+
+    const user = users.find(u => u.id === id);
+
+    if (!user) {
+        return res.status(404).send("User not found");
+    }
+
+    res.json(user);
+});
+
+
+// 🔹 3. POST → Add new user
+app.post('/users', (req, res) => {
+    const newUser = {
+        id: users.length + 1,
+        name: req.body.name
+    };
+
+    users.push(newUser);
+
+    res.status(201).json(newUser);
+});
+
+
+// 🔹 4. PUT → Update user
+app.put('/users/:id', (req, res) => {
+    const id = parseInt(req.params.id);
+
+    const user = users.find(u => u.id === id);
+
+    if (!user) {
+        return res.status(404).send("User not found");
+    }
+
+    user.name = req.body.name;
+
+    res.json(user);
+});
+
+
+// 🔹 5. DELETE → Remove user
+app.delete('/users/:id', (req, res) => {
+    const id = parseInt(req.params.id);
+
+    users = users.filter(u => u.id !== id);
+
+    res.send("User deleted");
+});
+
+
+app.listen(3000, () => {
+    console.log("Server running on port 3000");
+});
