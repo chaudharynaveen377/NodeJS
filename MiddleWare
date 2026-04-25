@@ -1,0 +1,102 @@
+🧠 1️⃣ Middleware kya hota hai?
+
+Middleware ek function hota hai jo request aur response ke beech me execute hota hai.
+
+👉 Simple flow:
+
+Request → Middleware → Route Handler → Response
+
+👉 Matlab:
+
+Request aayi
+Middleware ne check/modify kiya
+Phir next step pe gaya
+⚙️ 2️⃣ Middleware ka Structure
+(req, res, next) => { }
+req → request data
+res → response bhejne ke liye
+next() → next middleware/route ko call karta hai
+💻 3️⃣ Basic Example
+const express = require('express');
+const app = express();
+
+// Middleware
+app.use((req, res, next) => {
+    console.log("Request received");
+    next();
+});
+
+app.get('/', (req, res) => {
+    res.send("Home Page");
+});
+
+app.listen(3000);
+🔍 Flow
+Request → Middleware (console log) → Route → Response
+
+👉 Output:
+
+Request received
+🧩 4️⃣ Types of Middleware (Important 🔥)
+🔹 1. Application-Level Middleware
+
+👉 Pure app ke liye
+
+app.use((req, res, next) => {
+    console.log("App level middleware");
+    next();
+});
+🔹 2. Route-Level Middleware
+
+👉 Specific route ke liye
+
+const checkAuth = (req, res, next) => {
+    console.log("Auth checked");
+    next();
+};
+
+app.get('/dashboard', checkAuth, (req, res) => {
+    res.send("Dashboard");
+});
+🔹 3. Built-in Middleware
+
+👉 Express ke andar already hota hai
+
+app.use(express.json());
+
+👉 JSON body ko parse karta hai
+
+🔹 4. Third-party Middleware
+
+👉 External packages
+
+Example:
+
+body-parser
+cors
+🔹 5. Error-handling Middleware
+
+👉 Errors handle karta hai
+
+app.use((err, req, res, next) => {
+    res.status(500).send("Something went wrong");
+});
+🚀 5️⃣ Real Example (Authentication Middleware)
+const express = require('express');
+const app = express();
+
+const auth = (req, res, next) => {
+    const token = "123";
+
+    if (token === "123") {
+        next();
+    } else {
+        res.send("Unauthorized");
+    }
+};
+
+app.get('/profile', auth, (req, res) => {
+    res.send("Welcome User");
+});
+
+app.listen(3000);
