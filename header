@@ -1,0 +1,25 @@
+What are Headers?
+
+Headers are key–value pairs sent along with HTTP requests and responses that carry metadata (extra information) about the request/response.
+
+👉 Simple:
+
+Body = actual data
+Headers = information about data
+📦 2️⃣ Types of Headers
+🔹 1. Request Headers (Client → Server)
+
+👉 Sent by browser/client
+
+Examples:
+Content-Type: application/json
+Authorization: Bearer token
+User-Agent: Mozilla/5.0
+🔹 2. Response Headers (Server → Client)
+
+👉 Sent by server
+
+Examples:
+Content-Type: text/html
+Cache-Control: no-cache
+Set-Cookie: user=123
