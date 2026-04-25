@@ -1,0 +1,35 @@
+What is Routing in Node.js?
+
+Routing is the process of defining how a server responds to different URLs (endpoints) and HTTP methods.
+
+👉 Simple:
+
+URL + Method → Decide what code runs
+🎯 Example
+GET /home     → Show homepage
+POST /login   → Handle login
+⚙️ 2️⃣ Routing using Core Node.js (http module)
+💻 Basic Example
+const http = require('http');
+
+const server = http.createServer((req, res) => {
+
+    if (req.url === '/' && req.method === 'GET') {
+        res.end("Home Page");
+    }
+
+    else if (req.url === '/about' && req.method === 'GET') {
+        res.end("About Page");
+    }
+
+    else if (req.url === '/login' && req.method === 'POST') {
+        res.end("Login Successful");
+    }
+
+    else {
+        res.statusCode = 404;
+        res.end("Page Not Found");
+    }
+});
+
+server.listen(3000);
