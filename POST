@@ -1,0 +1,16 @@
+app.post() (Create Data)
+📌 Use
+
+👉 Server par data bhejne ke liye
+
+💻 Example
+app.use(express.json());
+
+app.post('/user', (req, res) => {
+    const data = req.body;
+    res.send("User Created: " + data.name);
+});
+🔍 Explanation
+express.json() → body parse karta hai
+req.body → client se aaya data
+POST → new data create
