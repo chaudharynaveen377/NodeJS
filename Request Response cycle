@@ -1,0 +1,19 @@
+1️⃣ What is the request–response cycle?
+
+👉 It is a communication model where a client sends an HTTP request to a server, and the server processes it and sends back an HTTP response.
+
+2️⃣ What are the main components of an HTTP request?
+
+👉
+
+Method (GET, POST, etc.)
+URL
+Headers
+Body (optional)
+3️⃣ What are the parts of an HTTP response?
+
+👉
+
+Status code
+Headers
+Body
