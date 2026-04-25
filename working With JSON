@@ -1,0 +1,105 @@
+1️⃣ What is JSON?
+
+JSON (JavaScript Object Notation) is a lightweight format used to store and transfer data between client and server.
+
+👉 It looks like a JavaScript object, but it is always a string when transferred over network
+
+📦 Example JSON
+{
+  "name": "Naveen",
+  "age": 20,
+  "skills": ["Java", "Node.js"]
+}
+⚙️ 2️⃣ JSON vs JavaScript Object
+JSON	JavaScript Object
+String format	Actual object
+Used in network	Used in code
+Keys must be in quotes	Quotes optional
+🔄 3️⃣ Conversion (Very Important 🔥)
+🔹 1. Object → JSON String
+
+👉 Use JSON.stringify()
+
+const obj = {
+  name: "Naveen",
+  age: 20
+};
+
+const jsonString = JSON.stringify(obj);
+
+console.log(jsonString);
+
+👉 Output:
+
+{"name":"Naveen","age":20}
+🔹 2. JSON String → Object
+
+👉 Use JSON.parse()
+
+const jsonString = '{"name":"Naveen","age":20}';
+
+const obj = JSON.parse(jsonString);
+
+console.log(obj.name);
+
+👉 Output:
+
+Naveen
+🌐 4️⃣ JSON in Request–Response (Real Use)
+📤 Sending JSON (Server → Client)
+const http = require('http');
+
+http.createServer((req, res) => {
+    const data = { name: "Naveen", role: "Developer" };
+
+    res.setHeader("Content-Type", "application/json");
+    res.end(JSON.stringify(data));
+}).listen(3000);
+📥 Receiving JSON (Client → Server)
+let body = '';
+
+req.on('data', chunk => {
+    body += chunk;
+});
+
+req.on('end', () => {
+    const data = JSON.parse(body);
+    console.log(data);
+});
+🚀 5️⃣ JSON with Express (Easy Way 🔥)
+Enable JSON parsing middleware
+app.use(express.json());
+Example
+app.post('/user', (req, res) => {
+    console.log(req.body); // already parsed JSON
+    res.send("Data received");
+});
+🎯 6️⃣ Interview Questions + Answers
+Q1: What is JSON?
+
+👉 A lightweight data format used for data exchange between client and server.
+
+Q2: How to convert object to JSON string?
+
+👉 Using JSON.stringify()
+
+Q3: How to convert JSON string to object?
+
+👉 Using JSON.parse()
+
+Q4: Why do we convert JSON to string?
+
+👉 Because data over network is transferred as string format
+
+Q5: What is Content-Type for JSON?
+
+👉
+
+application/json
+Q6: What happens if JSON.parse() gets invalid data?
+
+👉 It throws an error (SyntaxError)
+
+Q7: Difference between JSON and JavaScript object?
+
+👉 JSON is string format, object is in-memory structure
