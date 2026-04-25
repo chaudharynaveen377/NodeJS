@@ -1,0 +1,13 @@
+app.put() (Update Data)
+📌 Use
+
+👉 Existing data update karne ke liye
+
+💻 Example
+app.put('/user/:id', (req, res) => {
+    const id = req.params.id;
+    res.send("User Updated: " + id);
+});
+🔍 Explanation
+:id → route parameter
+req.params.id → dynamic value
