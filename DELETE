@@ -1,0 +1,9 @@
+app.delete() (Delete Data)
+📌 Use
+
+👉 Data delete karne ke liye
+
+💻 Example
+app.delete('/user/:id', (req, res) => {
+    res.send("User Deleted: " + req.params.id);
+});
