@@ -1,0 +1,77 @@
+1️⃣ What is Event-Driven Architecture?
+
+👉 It is a design pattern where program flow is controlled by events and their handlers.
+
+2️⃣ What is an event?
+
+👉 An action or occurrence (e.g., user click, file read complete, request received).
+
+3️⃣ What is EventEmitter in Node.js?
+
+👉 A built-in class used to create, emit, and listen to events.
+
+4️⃣ What is the difference between on() and emit()?
+
+👉
+
+on() → register listener
+emit() → trigger event
+5️⃣ What is an event listener?
+
+👉 A function that waits for a specific event and executes when it occurs.
+
+⚙️ 🔹 Intermediate Questions
+6️⃣ How does Node.js handle multiple requests using EDA?
+
+👉 Using:
+
+Event loop
+Non-blocking I/O
+Asynchronous callbacks
+7️⃣ What is the event loop?
+
+👉 A mechanism that continuously checks the event queue and executes callbacks when the call stack is empty.
+
+8️⃣ What is non-blocking I/O?
+
+👉 Operations that do not stop execution while waiting (handled asynchronously).
+
+9️⃣ What happens when an event is emitted?
+
+👉
+
+Event is triggered
+Event loop checks listeners
+Registered callback executes
+🔟 What is a callback in EDA?
+
+👉 A function executed after an event occurs
+
+🚀 🔹 Advanced Questions
+1️⃣1️⃣ Difference between synchronous and asynchronous events?
+
+👉
+
+Sync → executed immediately
+Async → executed later via event loop
+1️⃣2️⃣ What is the role of libuv in Node.js?
+
+👉 It handles:
+
+Event loop
+Thread pool
+Async I/O operations
+1️⃣3️⃣ What is the difference between on() and once()?
+
+👉
+
+on() → runs every time event occurs
+once() → runs only once
+1️⃣4️⃣ How do you remove an event listener?
+
+👉
+
+emitter.off('event', callback);
+1️⃣5️⃣ What is event delegation?
+
+👉 Handling multiple events using a single listener (commonly in frontend, but conceptually related).
