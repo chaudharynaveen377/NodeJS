@@ -1,0 +1,10 @@
+Query string is used to send data through the URL in key-value format. In Node.js, it can be parsed using url.parse() or the modern URL class, which converts the query into an object for easy access.
+
+🔥 Final Summary
+? → start query
+& → multiple params
+url.parse() → old way
+URL() → modern way
+Express → req.query
+
+Agar tum chaho next step me m
